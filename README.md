@@ -1,4 +1,3 @@
 # appfile-api
 
-Spring boot application; test scheduling, which receives items from REST API and stores them; 
-and then consumes then in a separate scheduled task loop. 
+Simple Spring boot application, which tests task scheduling (consuming store); receives string items via REST API calls, and stores them; then consumes string items in a separate scheduled task loop. 
