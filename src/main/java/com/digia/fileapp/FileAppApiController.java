@@ -3,6 +3,9 @@ package com.digia.fileapp;
 import java.util.List;
 import java.lang.Integer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +18,8 @@ import com.digia.fileapp.store.FileAppStore;
 
 @Controller
 public class FileAppApiController {
+
+    private static final Logger log = LoggerFactory.getLogger(FileAppApiController.class);
 
     @Autowired
     FileAppStore store; 
@@ -31,6 +36,8 @@ public class FileAppApiController {
     @RequestMapping(value={"/put-item-to-store"}, method=RequestMethod.POST)
     public @ResponseBody Integer putItemToFileStore(
         @RequestBody String data) {
+
+        log.info("Got data {}", data); 
 
         store.putItemToStoreQueue(data);
         return 0; 

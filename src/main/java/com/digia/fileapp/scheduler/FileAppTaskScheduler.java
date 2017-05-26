@@ -21,11 +21,16 @@ public class FileAppTaskScheduler {
     @Autowired
     FileAppStore store; 
 
-    @Scheduled(fixedRate = 5000)
-    public void reportCurrentTime() {
+    @Scheduled(fixedRate = 10000)
+    public void consumeItemFromStore() {
         log.info("The time is now {}", dateFormat.format(new Date()));
+        String value = store.popItemFromStoreQueue();
 
-        // TODO read from store
+        if (value != null) {
+            log.info("Read from the store {}", value);
+        } else {
+            log.info("The store is empty!");
+        }
     }
 
 }
