@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.digia.fileapp.store.FileAppStore;
 
@@ -22,24 +23,25 @@ public class FileAppApiController {
     private static final Logger log = LoggerFactory.getLogger(FileAppApiController.class);
 
     @Autowired
-    FileAppStore store; 
+    FileAppStore store;
 
     @RequestMapping(value={"/get-items-from-store"}, method=RequestMethod.GET)
     public @ResponseBody List<String> getItemsFromFileStore(
             @RequestParam(value="search", required=false) String search) {
 
         List<String> result = store.getItemsFromStoreQueue();
-        
+
         return result;
     }
 
     @RequestMapping(value={"/put-item-to-store"}, method=RequestMethod.POST)
+    @PreAuthorize("@fileAppSecurity.hasPermission(authentication)")
     public @ResponseBody Integer putItemToFileStore(
         @RequestBody String data) {
 
-        log.info("Got data {}", data); 
+        log.info("Got data {}", data);
 
         store.putItemToStoreQueue(data);
-        return 0; 
+        return 0;
     }
 }

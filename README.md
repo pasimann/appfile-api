@@ -11,6 +11,8 @@ $ git clone https://github.com/pasimann/appfile-api.git
 $ git checkout develop
 # show local branches
 $ git branch
+# checkout to a new branch
+$ git checkout -b new-feature
 # show remote status vs. local
 $ git remote show origin
 # show local status
@@ -38,4 +40,11 @@ $ git rebase master
 # merge feature branch
 $ git checkout master
 $ git merge feature
+# MISC STUFF
+# show commit log
+$ git reflog
+# show commit count by author
+$ git shortlog -s -n --all --no-merges
+# find text from files
+$ find . -name \*.java -exec grep -l IOException {} \;
 ```
