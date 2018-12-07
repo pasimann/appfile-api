@@ -2,7 +2,7 @@
 
 Simple Spring boot application, which tests task scheduling (consuming store); receives string items via REST API calls, and stores them; then consumes string items in a separate scheduled task loop.
 
-#  git stuff
+#  git basic stuff
 
 ```
 # clone repo
@@ -23,6 +23,9 @@ $ git add file.txt
 $ git commit -m "Implemented stuff."
 # show changes
 $ git diff
+```
+# git undo, rebase, merge
+```
 # oops, undo last commit and edit it
 $ git reset --soft HEAD~1
 # oops, permanently delete the last commit
@@ -40,7 +43,12 @@ $ git rebase master
 # merge feature branch
 $ git checkout master
 $ git merge feature
-# MISC STUFF
+# cherry pick bug fix to branch (master)
+$ git checkout master
+$ git cherry-pick b527699
+```
+# git misc stuff
+```
 # show commit log
 $ git reflog
 # show commit count by author
